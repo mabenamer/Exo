@@ -1,0 +1,26 @@
+.banner-home {
+    background-color: #FFFFFF !important;
+    background-image:  url('https://www.inpi.fr/sites/default/files/2023-08/header_inpi_3.png') !important;
+    background-repeat: no-repeat !important;
+    background-attachment: scroll !important;
+    background-position: center center !important;
+    z-index: auto;
+    background-size: cover !important;
+    -webkit-background-size: cover !important;
+    -moz-background-size: cover !important;
+    -o-background-size: cover !important;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='https://www.inpi.fr/sites/default/files/2023-08/header_inpi_3.png', sizingMethod='scale');
+    -ms-filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='https://www.inpi.fr/sites/default/files/2023-08/header_inpi_3.png', sizingMethod='scale');
+  }
+  
+
+  .custom-background {
+    background-color: #f0f0f0; /* Remplacez cette couleur par celle de votre choix */
+}
+
+.custom-title {
+    color: #333; /* Couleur du texte */
+    font-size: 2.5rem; /* Taille de la police */
+    font-weight: bold; /* Gras */
+    text-align: center; /* Alignement centré */
+}

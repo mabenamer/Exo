@@ -1,0 +1,25 @@
+{# templates/air_quality/index.html.twig #}
+
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+{% endblock %}
+{% block title %}Air Quality{% endblock %}
+
+{% block body %}
+<div class="container custom-background">
+    <h1 class="mt-5 custom-title">Air Quality</h1>
+    <div class="form-group mt-3">
+        <label for="locality">Choisir une localité :</label>
+        <select id="locality" name="locality" class="form-control">
+            {% for name, coords in localities %}
+                <option value="{{ coords }}" {% if name == selectedLocality %}selected{% endif %}>{{ name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mt-5">
+        <canvas id="airQualityChart" width="800" height="400"></canvas>
+    </div>
+</div>
+{% endblock %}

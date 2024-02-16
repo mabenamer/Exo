@@ -10,16 +10,40 @@
 {% block body %}
 <div class="container custom-background">
     <h1 class="mt-5 custom-title">Air Quality</h1>
-    <div class="form-group mt-3">
-        <label for="locality">Choisir une localité :</label>
-        <select id="locality" name="locality" class="form-control">
-            {% for name, coords in localities %}
-                <option value="{{ coords }}" {% if name == selectedLocality %}selected{% endif %}>{{ name }}</option>
-            {% endfor %}
-        </select>
-    </div>
+
+    <form id="localityForm" action="{{ path('app_airquality') }}" method="get">
+        <div class="form-group mt-3">
+            <label for="locality">Choisir une localité :</label>
+            <select id="locality" name="locality" class="form-control">
+                {% for name, coords in localities %}
+                    {% set selected = (name == selectedLocality) ? 'selected' : '' %}
+                    <option value="{{ name }}" {{ selected }}>{{ name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+    </form>
+
     <div class="mt-5">
         <canvas id="airQualityChart" width="800" height="400"></canvas>
     </div>
+
+    <script>
+
+        // Récupérer les données d'airQualityData depuis le serveur dans la variable Twig
+        var airQualityData = {{ data|json_encode|raw }};
+
+        // Extraire les étiquettes et les valeurs de l'objet airQualityData
+        var labels = airQualityData.hoursInfo.map(function(hourInfo) {
+            return hourInfo.dateTime;
+        });
+
+        var aqiValues = airQualityData.hoursInfo.map(function(hourInfo) {
+            return hourInfo.indexes[0].aqi;
+        });
+
+ 
+    </script>
 </div>
 {% endblock %}
+
